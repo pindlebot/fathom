@@ -12,5 +12,9 @@
   },
   "scripts": {
     "build": "tsc -d"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
