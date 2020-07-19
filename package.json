@@ -4,7 +4,9 @@
   "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/history": "^4.7.6",
     "@types/node": "^14.0.23",
+    "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "ts-node": "^8.10.2",
