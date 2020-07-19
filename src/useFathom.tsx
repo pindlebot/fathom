@@ -16,6 +16,8 @@ type TrackPageViewParams = {
   referrer?: string
 }
 
+export const FATHOM_SCRIPT_ID = 'fathom-script'
+
 function useFathom (options: FathomProps) {
   const { siteId, host } = options
   const ref = React.useRef(false)
@@ -31,19 +33,25 @@ function useFathom (options: FathomProps) {
 
   const onLoad = () => {
     ref.current = true
+    trackPageview()
   }
 
   React.useEffect(() => {
+    if (
+      document.getElementById(FATHOM_SCRIPT_ID)
+    ) {
+      return
+    }
     const script = document.createElement('script')
     script.async = true
-    script.id = 'fathom-script'
+    script.id = FATHOM_SCRIPT_ID
     script.src = src
     script.onload = onLoad
     window.fathom = window.fathom || function () {
       (window.fathom.q = window.fathom.q || []).push(arguments)
     }
-    const ref = document.getElementsByTagName('script')[0]
-    ref.parentNode.insertBefore(script, ref)
+    const node = document.getElementsByTagName('script')[0]
+    node.parentNode.insertBefore(script, node)
     window.fathom('set', 'siteId', siteId)
   }, [])
 
