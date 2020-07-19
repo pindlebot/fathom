@@ -10,7 +10,7 @@ type FathomProps = {
   onLoad?: (evt: any) => any
 }
 
-function Fathom (props: FathomProps) {
+function useFathom (props: FathomProps) {
   const { siteId, host, onLoad } = props
   const ref = React.useRef(null)
   const src = `${host}/tracker.js`
@@ -41,4 +41,4 @@ function Fathom (props: FathomProps) {
   return [trackPageview]
 } 
 
-export default Fathom
+export default useFathom
