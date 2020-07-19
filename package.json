@@ -1,0 +1,16 @@
+{
+  "name": "@menubar/fathom",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.0.23",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "scripts": {
+    "build": "tsc -d"
+  }
+}
