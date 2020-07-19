@@ -1,5 +1,4 @@
 import React from 'react'
-import { Location } from 'history'
 
 type WindowLocationn = Window['location'] & Location
 
@@ -9,8 +8,7 @@ declare global {
 
 type FathomProps = {
   host: string,
-  siteId: string,
-  useLocation: () => WindowLocationn
+  siteId: string
 }
 
 type TrackPageViewParams = {
@@ -19,8 +17,7 @@ type TrackPageViewParams = {
 }
 
 function useFathom (options: FathomProps) {
-  const { siteId, host, useLocation } = options
-  const location = useLocation()
+  const { siteId, host } = options
   const ref = React.useRef(false)
   const src = `${host}/tracker.js`
   
@@ -49,13 +46,6 @@ function useFathom (options: FathomProps) {
     ref.parentNode.insertBefore(script, ref)
     window.fathom('set', 'siteId', siteId)
   }, [])
-
-  React.useEffect(() => {
-    trackPageview({
-      url: location.href
-    })
-  }, [location])
-  
 
   return [trackPageview]
 } 
